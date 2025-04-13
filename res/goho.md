@@ -138,7 +138,7 @@ func main() {
 		templatePath = envPath
 	} else {
 		// Then try relative to current directory
-		templatePath = "/Users/andrewgorbet/mybin/proj/exec/gohub/templates/index.html"
+		templatePath = "{TEMPLATE PATH HERE}"
 	}
 	// --- Load HTML Template ---
 	templateContent, err := os.ReadFile(templatePath)
