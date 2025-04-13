@@ -95,7 +95,7 @@ func RunGoldhub() error {
 		templatePath = envPath
 	} else {
 		// Then try relative to current directory
-		templatePath = "/Users/andrewgorbet/mybin/proj/exec/gomark/templates/index.html"
+		templatePath = "{ESTABLISH YOUR TEMPLATE'S LOCAL PATH HERE}"
 	}
 
 	// --- Load HTML Template ---
