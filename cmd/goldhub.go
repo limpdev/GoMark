@@ -95,7 +95,7 @@ func RunGoldhub() error {
 		templatePath = envPath
 	} else {
 		// Then try relative to current directory
-		templatePath = "{ESTABLISH YOUR TEMPLATE'S LOCAL PATH HERE}"
+		templatePath = "C:/Users/drewg/bin/exe/GoMark/templates/index.html"
 	}
 
 	// --- Load HTML Template ---

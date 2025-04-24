@@ -59,7 +59,7 @@ Arguments:
 
 Examples:
   gomark document.md        # Convert document.md to document.html
-  cat document.md | gohub   # Convert stdin to output.html
+  cat document.md | gomark   # Convert stdin to output.html
   
 Environment Variables:
   MARKDOWN_TEMPLATE_PATH   Path to custom HTML template`)
