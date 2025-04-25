@@ -174,6 +174,8 @@ With a reference later in the document defining the URL location:
 
 Very effective [syntax plugins](https://www.npmjs.org/browse/keyword/markdown-it-plugin) from `markdown-it`:
 
+<details><summary>🎁<i>Already Did This with Transformations</i></summary>
+
 ### [Emoji](https://github.com/markdown-it/markdown-it-emoji)
 
 Classic markup:
@@ -187,6 +189,8 @@ Shortcuts (emoticons):
 `:-) :-( 8-) ;)`
 
 :-) :-( 8-) ;)
+
+</details>
 
 ### [Subscript](https://github.com/markdown-it/markdown-it-sub) / [Superscript](https://github.com/markdown-it/markdown-it-sup)
 
@@ -266,6 +270,7 @@ gantt
     Task in sequence :2022-03-04, 12d
     Task, No. 2      :24d
 ```
+<details><summary>🎁<i>LAME</i></summary>
 
 ### [\<ins>](https://github.com/markdown-it/markdown-it-ins)
 
@@ -273,13 +278,15 @@ gantt
 
 `++Inserted text++`
 
-### [\<mark>](https://github.com/markdown-it/markdown-it-mark)
+</details>
+
+### [Marked, or Highlighted Text](https://github.com/markdown-it/markdown-it-mark)
 
 ==Marked text==
 
-`==Marked text==`
+`=Marked text=` -> <em>...two equal signs needed to wrap...</em>
 
-### [Abbreviations](https://github.com/markdown-it/markdown-it-abbr)
+### [Abbreviations](https://github.com/markdown-it/markdown-it-abbr) <-
 
 This is HTML abbreviation example.
 
@@ -329,6 +336,8 @@ Duplicated footnote reference[^second].
 
 [^second]: Footnote text.
 
+<details><summary>🎁<i>Admonitions (Alternative Method)</i></summary>
+
 ### [Custom containers](https://github.com/markdown-it/markdown-it-container)
 
 ::: info
@@ -350,6 +359,8 @@ _Fortune favors the bold._
 ::: danger
 **_Hic sunt dracones!_**
 :::
+
+</details>
 
 ### [Alert](https://github.com/mdit-plugins/mdit-plugins)
 

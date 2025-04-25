@@ -1,8 +1,19 @@
 <!DOCTYPE html>
-	<meta name="viewport" content="width=device-width, initial-scale=1" lang="en" />
-	<head>
+<meta name="viewport" content="width=device-width, initial-scale=1" lang="en" />
+
+<head>
 	<meta charset="UTF-8" />
 	<title>ex</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css"
+		integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
+	<!-- The loading of KaTeX is deferred to speed up page rendering -->
+	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"
+		integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg"
+		crossorigin="anonymous"></script>
+	<!-- To automatically render math in text elements, include the auto-render extension: -->
+	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+		integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"
+		onload="renderMathInElement(document.body);"></script>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
 	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/limpdev/limpbin@main/css/prismHL.css" />
 	<style type="text/css">
@@ -14,6 +25,7 @@
 			max-width: 1100px;
 			min-width: 650px;
 			justify-content: center;
+			text-rendering: optimizeLegibility !important;
 		}
 
 		.markdown-body {
@@ -47,10 +59,10 @@
 				--fgColor-attention: #d29922;
 				--fgColor-danger: #f85149;
 				--fgColor-done: #ab7df8;
-				--bgColor-default: #171717;
+				--bgColor-default: #161616;
 				--bgColor-muted: #09090a;
 				--bgColor-neutral-muted: #656c7633;
-				--bgColor-attention-muted: #bb800926;
+				--bgColor-attention-muted: #ffee0033;
 				--borderColor-default: #3d444d;
 				--borderColor-muted: #3d444db3;
 				--borderColor-neutral-muted: #3d444db3;
@@ -97,7 +109,7 @@
 		body {
 			display: flow;
 			justify-items: center;
-			background-color: #171717 !important;
+			background-color: #161616 !important;
 			color: var(--fgColor-default) !important;
 			margin: 0 !important;
 		}
@@ -108,7 +120,7 @@
 			-webkit-text-size-adjust: 100%;
 			margin: 0;
 			color: var(--fgColor-default);
-			background-color: var(--bgColor-default);
+			background-color: #161616 !important;
 			font-family: "SFProDisplay Nerd Font", "Satoshi Nerd Font", BlinkMacSystemFont, "Segoe UI", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
 			font-size: 16.5px;
 			line-height: 1.3;
@@ -180,8 +192,10 @@
 		}
 
 		.markdown-body mark {
-			background-color: var(--bgColor-attention-muted);
+			background-color: #ffee0033;
 			color: var(--fgColor-default);
+			padding: 3px;
+			border-radius: 4px;
 		}
 
 		.markdown-body small {
@@ -207,6 +221,7 @@
 		.markdown-body img {
 			border-style: none;
 			max-width: 100%;
+			width: 25%;
 			box-sizing: content-box;
 		}
 
@@ -287,17 +302,76 @@
 			opacity: 1;
 		}
 
-		.markdown-body hr::before {
+		table {
+			padding: 0;
+			border-collapse: collapse;
+			margin-left: auto;
+			margin-right: auto;
+			text-align: center;
+		}
+
+		table tr {
+			/* border-top: 1px solid #cccccc; */
+			background-color: #0b182a;
+			margin: 0;
+			padding: 0;
+		}
+
+		table tr:nth-child(2n) {
+			background-color: #f8f8f8;
+		}
+
+		table tr th {
+			font-family: "Roboto Slab", sans-serif;
+			font-weight: bold;
+			/* border: 0.5px solid #cccccc; */
+			/* border-left: 0.5px solid #cccccc;
+      border-right: 0.5px solid #cccccc; */
+			background-color: #0b182a;
+			font-size: 15px;
+			margin: 0;
+			padding: 0.4em 0.35em 0.4em 0.35em;
+		}
+
+		table tr td {
+			/* border: 1px solid #cccccc; */
+			margin: 0;
+			font-size: 14px;
+			padding: 5px 5px;
+		}
+
+		table tr th :first-child,
+		table tr td :first-child {
+			margin-top: 0;
+		}
+
+		table tr th :last-child,
+		table tr td :last-child {
+			margin-bottom: 0;
+		}
+
+		.markdown-body table tr:nth-child(2n),
+		.markdown-body table tr {
+			transition: all 300ms ease-in-out;
+		}
+
+		.markdown-body table tr:hover {
+			background-color: #f8f8f81b;
+		}
+
+		.markdown-body table tr:nth-child(2n):hover {
+			background-color: #f8f8f81b;
+		}
+
+		/* .markdown-body hr::before {
 			display: table;
 			content: "";
 		}
-
 		.markdown-body hr::after {
 			display: table;
 			clear: both;
 			content: "";
 		}
-
 		.markdown-body table {
 			border-spacing: 0;
 			border-collapse: collapse;
@@ -308,11 +382,10 @@
 			overflow-wrap: anywhere;
 			font-variant: tabular-nums;
 		}
-
 		.markdown-body td,
 		.markdown-body th {
 			padding: 0;
-		}
+		} */
 
 		.markdown-body details summary {
 			cursor: pointer;
@@ -670,7 +743,7 @@
 		.markdown-body table th,
 		.markdown-body table td {
 			padding: 6px 13px;
-			border: 1px solid var(--borderColor-default);
+			border: 0px solid var(--borderColor-default);
 		}
 
 		.markdown-body table td> :last-child {
@@ -678,6 +751,7 @@
 		}
 
 		.markdown-body table tr {
+			font-family: "Satoshi Nerd Font", sans-serif;
 			background-color: var(--bgColor-default);
 			border-top: 1px solid var(--borderColor-muted);
 		}
@@ -1132,7 +1206,6 @@
 			color: #7b98da;
 			opacity: 0.6;
 			font-size: large;
-			cursor: pointer;
 			z-index: 10;
 			transition: all 1s ease;
 		}
@@ -1146,6 +1219,7 @@
 
 		/* SVG icon styles */
 		.copy-button svg {
+			cursor: crosshair;
 			width: 19px;
 			height: 19px;
 			stroke: #f5d49e;
@@ -1309,14 +1383,14 @@
 
 		/* END OF EXTRAS CSS */
 	</style>
-	</head>
-	<body>
+</head>
+
+<body>
 	<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/limpdev/limpbin@main/css/prismHL.js"></script>
-	<article class="markdown-body"><p>—-<br />
-Author: &lsquo;John Doe&rsquo;<br />
+	<article class="markdown-body"><hr />
+<h2 id="rating-5">Author: &lsquo;John Doe&rsquo;<br />
 Category: &lsquo;Non-fiction&rsquo;<br />
-Rating: 5<br />
-—-</p>
+Rating: 5</h2>
 <h1 id="h1-heading-8-">h1 Heading 8-)</h1>
 <h2 id="h2-heading">h2 Heading</h2>
 <h3 id="h3-heading">h3 Heading</h3>
@@ -1326,8 +1400,8 @@ Rating: 5<br />
 <h2 id="typographic-replacements">Typographic replacements</h2>
 <p><code>± © (C) ® (R) ™ (TM)</code></p>
 <p>± © (C) ® (R) ™ (TM)</p>
-<p><code>!!!!!! ???? ,, — —-</code></p>
-<p>!!!!!! ???? ,, — —-</p>
+<p><code>🆘🆘 ❓? ,, -- ---</code></p>
+<p>🆘🆘 ❓? ,, &ndash; &mdash;</p>
 <p><code>example.. example… example….. example?….. example!….</code></p>
 <p>example.. example… example….. example?….. example!….</p>
 <p><code>&quot;Smartypants, double quotes&quot; and 'single quotes'</code></p>
@@ -1335,8 +1409,8 @@ Rating: 5<br />
 <h2 id="emphasis">Emphasis</h2>
 <p><em>This is italic text</em></p>
 <p><strong>This is bold text</strong></p>
-<p>≈Strikethrough≈</p>
-<p>≈<strong><em>This is italic and bold text</em></strong>≈</p>
+<p><del>Strikethrough</del></p>
+<p><del><strong><em>This is italic and bold text</em></strong></del></p>
 <h2 id="blockquotes">Blockquotes</h2>
 <blockquote>
 <p>Blockquotes can also be nested…</p>
@@ -1405,7 +1479,7 @@ line 3 of code
 </code></pre>
 <p>Syntax highlighting</p>
 <pre><code class="language-typescript">function factorial(n: number): number {
-  if (n ≡= 0) {
+  if (n === 0) {
     return 1
   }
   return n * factorial(n - 1)
@@ -1415,7 +1489,7 @@ const num: number = 5
 console.log(`The factorial of ${num} is ${factorial(num)}`)
 </code></pre>
 <pre><code class="language-python">def factorial(n):
-    if n ≡ 0:
+    if n == 0:
         return 1
     else:
         return n * factorial(n-1)
@@ -1424,24 +1498,58 @@ num = 5
 print(f&quot;The factorial of {num} is {factorial(num)}&quot;)
 </code></pre>
 <h2 id="tables">Tables</h2>
-<p>| Option | Description                                                               |<br />
-| ——— | ————————————————————————————————————- |<br />
-| data   | path to data files to supply the data that will be passed into templates. |<br />
-| engine | engine to be used for processing templates. Handlebars is the default.    |<br />
-| ext    | extension to be used for dest files.                                      |</p>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>data</td>
+<td>path to data files to supply the data that will be passed into templates.</td>
+</tr>
+<tr>
+<td>engine</td>
+<td>engine to be used for processing templates. Handlebars is the default.</td>
+</tr>
+<tr>
+<td>ext</td>
+<td>extension to be used for dest files.</td>
+</tr>
+</tbody>
+</table>
 <p>Right aligned columns</p>
-<p>| Option |                                                               Description |<br />
-| ——-: | ————————————————————————————————————: |<br />
-|   data | path to data files to supply the data that will be passed into templates. |<br />
-| engine |    engine to be used for processing templates. Handlebars is the default. |<br />
-|    ext |                                      extension to be used for dest files. |</p>
+<table>
+<thead>
+<tr>
+<th align="right">Option</th>
+<th align="right">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right">data</td>
+<td align="right">path to data files to supply the data that will be passed into templates.</td>
+</tr>
+<tr>
+<td align="right">engine</td>
+<td align="right">engine to be used for processing templates. Handlebars is the default.</td>
+</tr>
+<tr>
+<td align="right">ext</td>
+<td align="right">extension to be used for dest files.</td>
+</tr>
+</tbody>
+</table>
 <h2 id="horizontal-rules">Horizontal Rules</h2>
-<p><code>—-</code></p>
-<p>—-</p>
+<p><code>---</code></p>
+<hr />
 <p><code>___</code></p>
-<p>—-</p>
+<hr />
 <p><code>***</code></p>
-<p>—-</p>
+<hr />
 <h2 id="links">Links</h2>
 <p><a href="http://dev.nodeca.com">link text</a></p>
 <p><a href="http://nodeca.github.io/pica/demo/" title="title text!">link with title</a></p>
@@ -1456,16 +1564,18 @@ print(f&quot;The factorial of {num} is {factorial(num)}&quot;)
 <p><code>[id]: https://octodex.github.com/images/nyantocat.gif &quot;Nyantocat&quot;</code></p>
 <h2 id="plugins">Plugins</h2>
 <p>Very effective <a href="https://www.npmjs.org/browse/keyword/markdown-it-plugin">syntax plugins</a> from <code>markdown-it</code>:</p>
+<details><summary>🎁<i>Already Did This with Transformations</i></summary>
 <h3 id="emojihttpsgithubcommarkdown-itmarkdown-it-emoji"><a href="https://github.com/markdown-it/markdown-it-emoji">Emoji</a></h3>
 <p>Classic markup:</p>
 <p><code>:wink: :cry: :laughing: :yum: :100: :dog: :cat:</code></p>
 <p>:wink: :cry: :laughing: :yum: :100: :dog: :cat:</p>
 <p>Shortcuts (emoticons):</p>
-<p><code>:-) :-( 8-) 😉</code></p>
-<p>:-) :-( 8-) 😉</p>
+<p><code>:-) :-( 8-) ;)</code></p>
+<p>:-) :-( 8-) ;)</p>
+</details>
 <h3 id="subscripthttpsgithubcommarkdown-itmarkdown-it-sub--superscripthttpsgithubcommarkdown-itmarkdown-it-sup"><a href="https://github.com/markdown-it/markdown-it-sub">Subscript</a> / <a href="https://github.com/markdown-it/markdown-it-sup">Superscript</a></h3>
 <ul>
-<li>19^th^</li>
+<li>19<sup>th</sup></li>
 <li>H<del>2</del>O</li>
 </ul>
 <h3 id="task-listshttpsgithubcomrevinmarkdown-it-task-lists"><a href="https://github.com/revin/markdown-it-task-lists">Task lists</a></h3>
@@ -1474,41 +1584,109 @@ print(f&quot;The factorial of {num} is {factorial(num)}&quot;)
 <li><input disabled="" type="checkbox" /> Todo 2</li>
 </ul>
 <h3 id="katexhttpsgithubcomwaylonflinnmarkdown-it-katex"><a href="https://github.com/waylonflinn/markdown-it-katex">KaTeX</a></h3>
-<p>$\sqrt{3x-1}+(1+x)²$</p>
-<p>$\sum_{i=0}^N\int_{a}^{b}g(t,i)\text{d}t$</p>
-<p>$$<br />
-\begin{array}{c}<br />
-\nabla \times \vec{\mathbf{B}} -, \frac1c, \frac{\partial\vec{\mathbf{E}}}{\partial t} &amp;<br />
-= \frac{4\pi}{c}\vec{\mathbf{j}}    \nabla \cdot \vec{\mathbf{E}} &amp; = 4 \pi \rho \<br />
-\nabla \times \vec{\mathbf{E}}, +, \frac1c, \frac{\partial\vec{\mathbf{B}}}{\partial t} &amp; = \vec{\mathbf{0}} \<br />
-\nabla \cdot \vec{\mathbf{B}} &amp; = 0<br />
-\end{array}<br />
-$$</p>
-<p>$$<br />
-\begin{bmatrix}<br />
-{a_{11}}&amp;{a_{12}}&amp;{\cdots}&amp;{a_{1n}}\<br />
-{a_{21}}&amp;{a_{22}}&amp;{\cdots}&amp;{a_{2n}}\<br />
-{\vdots}&amp;{\vdots}&amp;{\ddots}&amp;{\vdots}\<br />
-{a_{m1}}&amp;{a_{m2}}&amp;{\cdots}&amp;{a_{mn}}\<br />
-\end{bmatrix}<br />
-$$</p>
+<p><span class="math inline">\(\sqrt{3x-1}+(1+x)^2\)</span></p>
+<p><span class="math inline">\(\sum_{i=0}^N\int_{a}^{b}g(t,i)\text{d}t\)</span></p>
+<p><span class="math display">\[\begin{array}{c}
+\nabla \times \vec{\mathbf{B}} -\, \frac1c\, \frac{\partial\vec{\mathbf{E}}}{\partial t} &
+= \frac{4\pi}{c}\vec{\mathbf{j}}    \nabla \cdot \vec{\mathbf{E}} & = 4 \pi \rho \\
+\nabla \times \vec{\mathbf{E}}\, +\, \frac1c\, \frac{\partial\vec{\mathbf{B}}}{\partial t} & = \vec{\mathbf{0}} \\
+\nabla \cdot \vec{\mathbf{B}} & = 0
+\end{array}
+\]</span></p>
+<p><span class="math display">\[\begin{bmatrix}
+{a_{11}}&{a_{12}}&{\cdots}&{a_{1n}}\\
+{a_{21}}&{a_{22}}&{\cdots}&{a_{2n}}\\
+{\vdots}&{\vdots}&{\ddots}&{\vdots}\\
+{a_{m1}}&{a_{m2}}&{\cdots}&{a_{mn}}\\
+\end{bmatrix}
+\]</span></p>
 <br />
-<p>| Symbol |   Case (Lower/Upper)    | Symbol |   Case (Lower/Upper)    |<br />
-| :——: | :——————————-: | :——: | :——————————-: |<br />
-|   α    |   $\alpha$ - $\Alpha$   |   ν    |      $\nu$ - $\Nu$      |<br />
-|   β    |    $\beta$ - $\Beta$    |   ξ    |      $\xi$ - $\Xi$      |<br />
-|   γ    |   $\gamma$ - $\Gamma$   |   π    |      $\pi$ - $\Pi$      |<br />
-|   δ    |   $\delta$ - $\Delta$   |   ρ    |     $\rho$ - $\Rho$     |<br />
-|   ε    | $\epsilon$ - $\Epsilon$ |   σ    |   $\sigma$ - $\Sigma$   |<br />
-|   ζ    |    $\zeta$ - $\Zeta$    |   τ    |     $\tau$ - $\Tau$     |<br />
-|   η    |     $\eta$ - $\Eta$     |   υ    | $\upsilon$ - $\Upsilon$ |<br />
-|   θ    |   $\theta$ - $\Theta$   |   φ    |     $\phi$ - $\Phi$     |<br />
-|   ι    |    $\iota$ - $\Iota$    |   χ    |     $\chi$ - $\Chi$     |<br />
-|   κ    |   $\kappa$ - $\Kappa$   |   ψ    |     $\psi$ - $\Psi$     |<br />
-|   λ    |  $\lambda$ - $\Lambda$  |   ω    |   $\omega$ - $\Omega$   |<br />
-|   μ    |      $\mu$ - $\Mu$      |        |                         |</p>
+<table>
+<thead>
+<tr>
+<th align="center">Symbol</th>
+<th align="center">Case (Lower/Upper)</th>
+<th align="center">Symbol</th>
+<th align="center">Case (Lower/Upper)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">α</td>
+<td align="center"><span class="math inline">\(\alpha\)</span> - <span class="math inline">\(\Alpha\)</span></td>
+<td align="center">ν</td>
+<td align="center"><span class="math inline">\(\nu\)</span> - <span class="math inline">\(\Nu\)</span></td>
+</tr>
+<tr>
+<td align="center">β</td>
+<td align="center"><span class="math inline">\(\beta\)</span> - <span class="math inline">\(\Beta\)</span></td>
+<td align="center">ξ</td>
+<td align="center"><span class="math inline">\(\xi\)</span> - <span class="math inline">\(\Xi\)</span></td>
+</tr>
+<tr>
+<td align="center">γ</td>
+<td align="center"><span class="math inline">\(\gamma\)</span> - <span class="math inline">\(\Gamma\)</span></td>
+<td align="center">π</td>
+<td align="center"><span class="math inline">\(\pi\)</span> - <span class="math inline">\(\Pi\)</span></td>
+</tr>
+<tr>
+<td align="center">δ</td>
+<td align="center"><span class="math inline">\(\delta\)</span> - <span class="math inline">\(\Delta\)</span></td>
+<td align="center">ρ</td>
+<td align="center"><span class="math inline">\(\rho\)</span> - <span class="math inline">\(\Rho\)</span></td>
+</tr>
+<tr>
+<td align="center">ε</td>
+<td align="center"><span class="math inline">\(\epsilon\)</span> - <span class="math inline">\(\Epsilon\)</span></td>
+<td align="center">σ</td>
+<td align="center"><span class="math inline">\(\sigma\)</span> - <span class="math inline">\(\Sigma\)</span></td>
+</tr>
+<tr>
+<td align="center">ζ</td>
+<td align="center"><span class="math inline">\(\zeta\)</span> - <span class="math inline">\(\Zeta\)</span></td>
+<td align="center">τ</td>
+<td align="center"><span class="math inline">\(\tau\)</span> - <span class="math inline">\(\Tau\)</span></td>
+</tr>
+<tr>
+<td align="center">η</td>
+<td align="center"><span class="math inline">\(\eta\)</span> - <span class="math inline">\(\Eta\)</span></td>
+<td align="center">υ</td>
+<td align="center"><span class="math inline">\(\upsilon\)</span> - <span class="math inline">\(\Upsilon\)</span></td>
+</tr>
+<tr>
+<td align="center">θ</td>
+<td align="center"><span class="math inline">\(\theta\)</span> - <span class="math inline">\(\Theta\)</span></td>
+<td align="center">φ</td>
+<td align="center"><span class="math inline">\(\phi\)</span> - <span class="math inline">\(\Phi\)</span></td>
+</tr>
+<tr>
+<td align="center">ι</td>
+<td align="center"><span class="math inline">\(\iota\)</span> - <span class="math inline">\(\Iota\)</span></td>
+<td align="center">χ</td>
+<td align="center"><span class="math inline">\(\chi\)</span> - <span class="math inline">\(\Chi\)</span></td>
+</tr>
+<tr>
+<td align="center">κ</td>
+<td align="center"><span class="math inline">\(\kappa\)</span> - <span class="math inline">\(\Kappa\)</span></td>
+<td align="center">ψ</td>
+<td align="center"><span class="math inline">\(\psi\)</span> - <span class="math inline">\(\Psi\)</span></td>
+</tr>
+<tr>
+<td align="center">λ</td>
+<td align="center"><span class="math inline">\(\lambda\)</span> - <span class="math inline">\(\Lambda\)</span></td>
+<td align="center">ω</td>
+<td align="center"><span class="math inline">\(\omega\)</span> - <span class="math inline">\(\Omega\)</span></td>
+</tr>
+<tr>
+<td align="center">μ</td>
+<td align="center"><span class="math inline">\(\mu\)</span> - <span class="math inline">\(\Mu\)</span></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table>
 <h3 id="mermaidhttpsgithubcommd-readermarkdown-it-mermaidreadme"><a href="https://github.com/md-reader/markdown-it-mermaid#readme">MerMaid</a></h3>
-<pre><code class="language-mermaid">sequenceDiagram
+<pre class="mermaid">sequenceDiagram
     participant Alice
     participant Bob
     Alice⇾&gt;John: Hello John, how are you?
@@ -1516,11 +1694,10 @@ $$</p>
         John⇾&gt;John: Fight against hypochondria
     end
     Note right of John: Rational thoughts &lt;br/&gt;prevail!
-    John—»Alice: Great!
+    John-⇾&gt;Alice: Great!
     John⇾&gt;Bob: How about you?
-    Bob—»John: Jolly good!
-</code></pre>
-<pre><code class="language-mermaid">gantt
+    Bob-⇾&gt;John: Jolly good!
+</pre><pre class="mermaid">gantt
     title My Product Roadmap
     dateFormat  YYYY-MM-DD
     section Cool Feature
@@ -1529,14 +1706,15 @@ $$</p>
     section Rad Feature
     Task in sequence :2022-03-04, 12d
     Task, No. 2      :24d
-</code></pre>
+</pre><details><summary>🎁<i>LAME</i></summary>
 <h3 id="inshttpsgithubcommarkdown-itmarkdown-it-ins"><a href="https://github.com/markdown-it/markdown-it-ins">&lt;ins&gt;</a></h3>
 <p>++Inserted text++</p>
 <p><code>++Inserted text++</code></p>
-<h3 id="markhttpsgithubcommarkdown-itmarkdown-it-mark"><a href="https://github.com/markdown-it/markdown-it-mark">&lt;mark&gt;</a></h3>
-<p>≡Marked text≡</p>
-<p><code>≡Marked text≡</code></p>
-<h3 id="abbreviationshttpsgithubcommarkdown-itmarkdown-it-abbr"><a href="https://github.com/markdown-it/markdown-it-abbr">Abbreviations</a></h3>
+</details>
+<h3 id="marked-or-highlighted-texthttpsgithubcommarkdown-itmarkdown-it-mark"><a href="https://github.com/markdown-it/markdown-it-mark">Marked, or Highlighted Text</a></h3>
+<p>==Marked text==</p>
+<p><code>=Marked text=</code> ⇾ <em>…two equal signs needed to wrap…</em></p>
+<h3 id="abbreviationshttpsgithubcommarkdown-itmarkdown-it-abbr-"><a href="https://github.com/markdown-it/markdown-it-abbr">Abbreviations</a> ⇽</h3>
 <p>This is HTML abbreviation example.</p>
 <p>It converts &ldquo;HTML&rdquo;, but keep intact partial entries like &ldquo;xxxHTMLyyy&rdquo; and so on.</p>
 <p><code>*[HTML]: Hyper Text Markup Language</code></p>
@@ -1567,6 +1745,7 @@ with lazy continuation.</p>
 <p>Footnote 2 link<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>.</p>
 <p>Inline footnote^[Text of inline footnote] definition.</p>
 <p>Duplicated footnote reference<sup id="fnref1:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>.</p>
+<details><summary>🎁<i>Admonitions (Alternative Method)</i></summary>
 <h3 id="custom-containershttpsgithubcommarkdown-itmarkdown-it-container"><a href="https://github.com/markdown-it/markdown-it-container">Custom containers</a></h3>
 <p>::: info<br />
 Stay hungry, stay foolish.<br />
@@ -1583,6 +1762,7 @@ Stay hungry, stay foolish.<br />
 <p>::: danger<br />
 <strong><em>Hic sunt dracones!</em></strong><br />
 :::</p>
+</details>
 <h3 id="alerthttpsgithubcommdit-pluginsmdit-plugins"><a href="https://github.com/mdit-plugins/mdit-plugins">Alert</a></h3>
 <blockquote>
 <p>[!NOTE]<br />
@@ -1604,7 +1784,7 @@ Urgent info that needs immediate user attention to avoid problems.</p>
 <p>[!CAUTION]<br />
 Advises about risks or negative outcomes of certain actions.</p>
 </blockquote>
-<div class="footnotes" role="doc-endnotes">
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script><script>mermaid.initialize({startOnLoad: true});</script><div class="footnotes" role="doc-endnotes">
 <hr />
 <ol>
 <li id="fn:1">
@@ -1741,7 +1921,8 @@ Advises about risks or negative outcomes of certain actions.</p>
 			// Matches: <blockquote><p>[!TYPE] ... </p></blockquote>
 			const calloutRegex =
 				/<blockquote>\s*<p>\s*\[!(NOTE|TIP|IMPORTANT|WARNING|CAUTION)\]\s*([\s\S]*?)<\/p>\s*<\/blockquote>/gm;
-			return htmlText.replace(calloutRegex, function(match, type, content) {
+
+			return htmlText.replace(calloutRegex, function (match, type, content) {
 				// Normalize the type to handle case variations
 				const normalizedType = type.toUpperCase();
 				// Make sure we have a valid type, or default to NOTE
@@ -1750,26 +1931,41 @@ Advises about risks or negative outcomes of certain actions.</p>
 				const processedContent = content.trim();
 				// Build the HTML replacement
 				return `<div class="callout callout-${calloutType.toLowerCase()}">
-			  <div class="callout-header">
-			    <span class="callout-icon">${calloutTypes[calloutType]}</span>
-			    <span class="callout-title">${calloutType}</span>
-			  </div>
-			  <div class="callout-content">
-			    <p>${processedContent}</p>
-			  </div>
-			</div>`;
+      <div class="callout-header">
+        <span class="callout-icon">${calloutTypes[calloutType]}</span>
+        <span class="callout-title">${calloutType}</span>
+      </div>
+      <div class="callout-content">
+        <p>${processedContent}</p>
+      </div>
+    </div>`;
 			});
 		}
-		document.addEventListener("DOMContentLoaded", function() {
+
+		// MARK TAGS FOR TEXT - AKA, Highlighting!
+		function addMarkTags(text) {
+			// Replace text wrapped between == and == with <mark> tags
+			// This regex finds any text between =: and := regardless of its location
+			const markRegex = /==(.*?)==/g;
+			const markReplace = (match, content) => {
+				return `<mark>${content}</mark>`;
+			};
+			return text.replace(markRegex, markReplace);
+		}
+
+		document.addEventListener("DOMContentLoaded", function () {
 			// Get the current HTML content of the body
 			let bodyHTML = document.body.innerHTML;
-			// Convert the markdown callouts in the HTML to proper callout divs
+			// First apply the mark tags (highlighting)
+			bodyHTML = addMarkTags(bodyHTML);
+			// Then convert the markdown callouts
 			bodyHTML = convertMarkdownCalloutsToHtml(bodyHTML);
 			// Replace the body's HTML with the converted content
 			document.body.innerHTML = bodyHTML;
 		});
+
 		// Add ripple effect for every mouse click, anywhere on the page using an SVG
-		document.addEventListener("click", function(e) {
+		document.addEventListener("click", function (e) {
 			// Create a container for the ripple effect
 			const rippleContainer = document.createElement("div");
 			rippleContainer.style.position = "fixed";
@@ -1817,5 +2013,6 @@ Advises about risks or negative outcomes of certain actions.</p>
 			}, 500); // Match the duration of the animation
 		});
 	</script>
-	</body>
+</body>
+
 </html>

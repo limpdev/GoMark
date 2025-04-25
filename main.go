@@ -5,7 +5,7 @@ import (
 	"os"
 	"time"
 
-	"Former/cmd" // INTERNAL
+	"GoMark/cmd" // INTERNAL
 
 	"github.com/briandowns/spinner"
 )
