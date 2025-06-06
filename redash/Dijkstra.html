@@ -3,7 +3,7 @@
 
 <head>
 	<meta charset="UTF-8" />
-	<title>{{TITLE}}</title>
+	<title>Dijkstra</title>
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css"
 		integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
 	<!-- The loading of KaTeX is deferred to speed up page rendering -->
@@ -1387,7 +1387,20 @@
 
 <body>
 	<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/limpdev/limpbin@main/css/prismHL.js"></script>
-	<article class="markdown-body">{{CONTENT}}</article>
+	<article class="markdown-body"><h4 id="-on-the-foolishness-of-natural-language-programming--">… On the foolishness of &ldquo;natural language programming&rdquo; ⏚ …</h4>
+<p>Since the early days of automatic computing we have had people that have felt it as a shortcoming that programming required the care and accuracy that is characteristic for the use of any ==formal symbolism==. They blamed the mechanical slave for its strict obedience with which it carried out its given instructions, <em>even if a moment&rsquo;s thought would have revealed that those instructions contained an obvious mistake</em>. <strong>&ldquo;But a moment is a long time, and thought is a painful process.&rdquo; (A.E.Houseman)</strong>. They eagerly hoped and waited for more sensible machinery that would refuse to embark on such <code>nonsensical</code> activities as a trivial clerical error evoked at the time.</p>
+<p>Machine code🗿, with its absence of almost any form of redundancy, was soon identified as a needlessly risky interface between man and machine. Partly in response to this recognition so-called &quot;  ==high-level==  ==programming==  ==languages==&quot; were developed, and, as time went by, we learned to a certain extent how to enhance the protection against <em>silly</em> mistakes. It was a significant improvement that now many a silly mistake did result in an error message instead of in an erroneous answer. (And even this improvement wasn&rsquo;t universally appreciated: <strong>some people found error messages they couldn&rsquo;t ignore more annoying than wrong results</strong>, and, when judging the relative merits of programming languages, some still seem to equate &ldquo;the ease of programming&rdquo; with the ease of making undetected mistakes.) The (<em>abstract</em>) machine corresponding to a programming language remained, however, a faithful slave, i.e. the nonsensible automaton perfectly capable of carrying out nonsensical instructions. Programming remained the use of a formal symbolism and, as such, continued to require the care and accuracy required before.</p>
+<p>In order to make machines significantly easier to use, it has been proposed (to try) to design machines that we could instruct in our native tongues. this would, admittedly, make the machines much more complicated, but, it was argued, by letting the machine carry a larger share of the burden, life would become easier for us. It sounds sensible provided you blame the obligation to use a formal symbolism as the source of your difficulties. But is the argument valid? I doubt.</p>
+<p>We know in the meantime that the choice of an interface is not just a division of (a fixed amount of) labour, because the work involved in co-operating and communicating across the interface has to be added. We know in the meantime —from sobering experience, I may add— that a change of interface can easily increase at both sides of the fence the amount of work to be done (even drastically so). Hence the increased preference for what are now called &ldquo;narrow interfaces&rdquo;. Therefore, although changing to communication between machine and man conducted in the latter&rsquo;s native tongue would greatly increase the machine&rsquo;s burden, we have to challenge the assumption that this would simplify man&rsquo;s life.</p>
+<p>A short look at the history of mathematics shows how justified this challenge is. Greek mathematics got stuck because it remained a verbal, pictorial activity, Moslem &ldquo;algebra&rdquo;, after a timid attempt at symbolism, died when it returned to the rhetoric style, and the modern civilized world could only emerge —for better or for worse— when Western Europe could free itself from the fetters of medieval scholasticism —a vain attempt at verbal precision!— thanks to the carefully, or at least consciously designed formal symbolisms that we owe to people like Vieta, Descartes, Leibniz, and (later) Boole.</p>
+<p>The virtue of formal texts is that their manipulations, in order to be legitimate, need to satisfy only a few simple rules; they are, when you come to think of it, an amazingly effective tool for ruling out all sorts of nonsense that, when we use our native tongues, are almost impossible to avoid.</p>
+<p>Instead of regarding the obligation to use formal symbols as a burden, we should regard the convenience of using them as a privilege: thanks to them, school children can learn to do what in earlier days only genius could achieve. (This was evidently not understood by the author that wrote —in 1977— in the preface of a technical report that &ldquo;even the standard symbols used for logical connectives have been avoided for the sake of clarity&rdquo;. The occurrence of that sentence suggests that the author&rsquo;s misunderstanding is not confined to him alone.) When all is said and told, the &ldquo;naturalness&rdquo; with which we use our native tongues boils down to the ease with which we can use them for making statements the nonsense of which is not obvious.</p>
+<p>It may be illuminating to try to imagine what would have happened if, right from the start our native tongue would have been the only vehicle for the input into and the output from our information processing equipment. My considered guess is that history would, in a sense, have repeated itself, and that computer science would consist mainly of the indeed black art how to bootstrap from there to a sufficiently well-defined formal system. We would need all the intellect in the world to get the interface narrow enough to be usable, and, in view of the history of mankind, it may not be overly pessimistic to guess that to do the job well enough would require again a few thousand years.</p>
+<p>Remark. As a result of the educational trend away from intellectual discipline, the last decades have shown in the Western world a sharp decline of people&rsquo;s mastery of their own language: many people that by the standards of a previous generation should know better, are no longer able to use their native tongue effectively, even for purposes for which it is pretty adequate. (You have only to look at the indeed alarming amount of on close reading meaningless verbiage in scientific articles, technical reports, government publications etc.) This phenomenon —known as &ldquo;The New Illiteracy&rdquo;— should discourage those believers in natural language programming that lack the technical insight needed to predict its failure. (End of remark.)</p>
+<p>From one gut feeling I derive much consolation: I suspect that machines to be programmed in our native tongues —be it Dutch, English, American, French, German, or Swahili— are as damned difficult to make as they would be to use.</p>
+<hr />
+<p><em>Plataanstraat 5 | 5671 AL NUENEN | The Netherlands | Prof. Edsger Dijkstra</em></p>
+</article>
 	<script type="text/javascript">
 		// clipb.js
 		// Module for adding copy buttons to code blocks
@@ -1496,6 +1509,64 @@
 		if (typeof window !== "undefined") {
 			window.addEventListener("DOMContentLoaded", ClipbModule.init);
 		}
+		/**
+		 * Converts GitHub-style markdown callouts to HTML callouts within existing HTML blockquotes
+		 */
+		function convertMarkdownCalloutsToHtml(htmlText) {
+			// Define callout types and their icons
+			const calloutTypes = {
+				NOTE: '<i class="fas fa-info-circle"></i>',
+				TIP: '<i class="fas fa-lightbulb"></i>',
+				IMPORTANT: '<i class="fas fa-exclamation-circle"></i>',
+				WARNING: '<i class="fas fa-exclamation-triangle"></i>',
+				CAUTION: '<i class="fas fa-fire"></i>',
+			};
+			// Regex to match GitHub-style callouts inside blockquotes in HTML
+			// Matches: <blockquote><p>[!TYPE] ... </p></blockquote>
+			const calloutRegex =
+				/<blockquote>\s*<p>\s*\[!(NOTE|TIP|IMPORTANT|WARNING|CAUTION)\]\s*([\s\S]*?)<\/p>\s*<\/blockquote>/gm;
+
+			return htmlText.replace(calloutRegex, function (match, type, content) {
+				// Normalize the type to handle case variations
+				const normalizedType = type.toUpperCase();
+				// Make sure we have a valid type, or default to NOTE
+				const calloutType = Object.keys(calloutTypes).includes(normalizedType) ? normalizedType : "NOTE";
+				// Process the content - trim whitespace
+				const processedContent = content.trim();
+				// Build the HTML replacement
+				return `<div class="callout callout-${calloutType.toLowerCase()}">
+      <div class="callout-header">
+        <span class="callout-icon">${calloutTypes[calloutType]}</span>
+        <span class="callout-title">${calloutType}</span>
+      </div>
+      <div class="callout-content">
+        <p>${processedContent}</p>
+      </div>
+    </div>`;
+			});
+		}
+
+		// MARK TAGS FOR TEXT - AKA, Highlighting!
+		function addMarkTags(text) {
+			// Replace text wrapped between == and == with <mark> tags
+			// This regex finds any text between =: and := regardless of its location
+			const markRegex = /==(.*?)==/g;
+			const markReplace = (match, content) => {
+				return `<mark>${content}</mark>`;
+			};
+			return text.replace(markRegex, markReplace);
+		}
+
+		document.addEventListener("DOMContentLoaded", function () {
+			// Get the current HTML content of the body
+			let bodyHTML = document.body.innerHTML;
+			// First apply the mark tags (highlighting)
+			bodyHTML = addMarkTags(bodyHTML);
+			// Then convert the markdown callouts
+			bodyHTML = convertMarkdownCalloutsToHtml(bodyHTML);
+			// Replace the body's HTML with the converted content
+			document.body.innerHTML = bodyHTML;
+		});
 
 		// Add ripple effect for every mouse click, anywhere on the page using an SVG
 		document.addEventListener("click", function (e) {

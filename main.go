@@ -3,22 +3,11 @@ package main
 import (
 	"fmt"
 	"os"
-	"time"
 
 	"GoMark/cmd" // INTERNAL
-
-	"github.com/briandowns/spinner"
 )
 
 func main() {
-	// Show a welcome spinner
-	s := spinner.New(spinner.CharSets[14], 100*time.Millisecond)
-	s.Prefix = " 📄 Markdown Converter "
-	s.Color("fgHiMagenta")
-	s.Start()
-	time.Sleep(1000 * time.Millisecond)
-	s.Stop()
-
 	// Print version and tool info
 	fmt.Fprintf(os.Stderr, "GoMark Conversion Set ∙ v4.2.0\n")
 	fmt.Fprintf(os.Stderr, "Parsed by Goldmark🏅\n")
